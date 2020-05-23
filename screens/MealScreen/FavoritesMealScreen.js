@@ -1,13 +1,12 @@
 import React from 'react';
-import {View , Text } from 'react-native';
 
+import MealList from '../../components/MealList';
+import { MEALS } from '../../data/dammy-data';
 const FavoritesMealScreen = props =>{
-
-    return (
-<View><Text>Aminnnnnnnnnnnnnnnne</Text></View>
-
-    );
-
-}
+    const favMeals = MEALS.filter(meal => meal.id === 'm1' || meal.id === 'm2');
+    return <MealList listData={favMeals} navigation={props.navigation} />;
+  };
+  
+  
 
 export default FavoritesMealScreen;

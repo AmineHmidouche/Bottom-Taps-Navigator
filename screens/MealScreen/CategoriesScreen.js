@@ -6,7 +6,7 @@ import { Image, Platform, StyleSheet, Text, TouchableOpacity, View , FlatList } 
 import {CATEGORIES ,MEALS} from '../../data/dammy-data';
 import CategoryGridTile from '../../components/CategoryGridTile';
 
- const CategoriesScreen =( props , route) => {
+ const CategoriesScreen =( props,navigation) => {
 
     const RenderMyitem = (itemData) => {
     

@@ -11,6 +11,7 @@ import NAvigat2 from '../navigation/NAvigat2';
 import FavoritesMealScreen from '../screens/MealScreen/FavoritesMealScreen'
 //import MealsNavigator from '../navigation/MealsNavigator';
 import HomeScreen from '../screens/HomeScreen'
+import FavoritNavigator from '../navigation/FavoritNavigator'
 const BottomTab = createMaterialBottomTabNavigator();
 //const BottomTab = createBottomTabNavigator();
 //const INITIAL_ROUTE_NAME = 'Home';
@@ -40,7 +41,7 @@ export default function BottomTabNavigator({ navigation, route }) {
       <BottomTab.Screen
        barStyle={{ backgroundColor: Colors.amineColor ,focused:true}}
         name="Links"
-        component={FavoritesMealScreen}
+        component={FavoritNavigator}
        options={{
         
           title: 'Favorites',
