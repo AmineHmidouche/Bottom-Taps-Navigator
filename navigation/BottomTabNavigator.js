@@ -1,14 +1,18 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+//import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+
+
 import * as React from 'react';
+import Colors from '../constants/Colors'
+import TabBarIcon from '../components/TabBarIcon';
 
-//import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
-//import LinksScreen from '../screens/LinksScreen';
-import Navigat1 from '../navigation/Navigat1.js';
-import Navigat2 from '../navigation/NAvigat2';
-import Home4 from '../screens/Home4.js';
-
-const BottomTab = createBottomTabNavigator();
+//import Navigat1 from './Navigat1';
+import NAvigat2 from '../navigation/NAvigat2';
+import FavoritesMealScreen from '../screens/MealScreen/FavoritesMealScreen'
+//import MealsNavigator from '../navigation/MealsNavigator';
+import HomeScreen from '../screens/HomeScreen'
+const BottomTab = createMaterialBottomTabNavigator();
+//const BottomTab = createBottomTabNavigator();
 //const INITIAL_ROUTE_NAME = 'Home';
 
 export default function BottomTabNavigator({ navigation, route }) {
@@ -18,22 +22,40 @@ export default function BottomTabNavigator({ navigation, route }) {
   //navigation.setOptions({ headerTitle: getHeaderTitle(route) });
 
   return (
-    <BottomTab.Navigator /*initialRouteName={INITIAL_ROUTE_NAME}*/>
+    <BottomTab.Navigator 
+    
+   barStyle={{ backgroundColor: Colors.amineColor, }}>
+   
       <BottomTab.Screen
         name="Home"
-        component={Navigat1}
-        /*options={{
-          title: 'Get Started',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-code-working" />,
-        }}*/
+        component={NAvigat2}
+        
+        options={{
+          tabBarColor: Colors.amineColor,
+          
+          title: 'Meal Menus',
+          tabBarIcon: ({ color,focused }) => <TabBarIcon  focused={focused} color='red' name="md-restaurant" />,
+        }}
       />
       <BottomTab.Screen
+       barStyle={{ backgroundColor: Colors.amineColor ,focused:true}}
         name="Links"
+        component={FavoritesMealScreen}
+       options={{
+        
+          title: 'Favorites',
+          tabBarIcon: focused  =>{return (<TabBarIcon color={focused.amineColor}  name="md-star" /> )} 
+        }}
+      />
+
+<BottomTab.Screen
+        name="Lifnks"
         component={HomeScreen}
-       /* options={{
-          title: 'Resources',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-book" />,
-        }}*/
+       options={{
+         
+          title: 'Favorsites',
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused}  name="md-home" />,
+        }}
       />
     </BottomTab.Navigator>
   );

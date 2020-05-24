@@ -1,26 +1,49 @@
 import * as React from 'react';
 //import { Button, Text, View } from 'react-native';
-//import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import Home3 from '../screens/Home3';
-import Home4 from '../screens/Home4';
-import Home2 from '../screens/Home3';
-import Home from '../screens/Home4';
-const HomeStack = createStackNavigator();
+import { HeaderButtons, Item } from 'react-navigation-header-buttons';
+import HeaderButton from '../components/HeaderButton';
+import Colors from '../constants/Colors'
+import CategoriesScreen from '../screens/MealScreen/CategoriesScreen';
+import CategoriesMealScreen from '../screens/MealScreen/CategoriesMealScreen';
+import MealDetailScreen from '../screens/MealScreen/MealDetailScreen';
 
-function Navigat2() {
+const HomeStack = createStackNavigator();
+function NAvigat2() {
   return (
-    <HomeStack.Navigator>
-      <HomeStack.Screen name="Notification" component={Home3} />
-      <HomeStack.Screen options={{headerTitle:'My Home Screen'}} name="Details" component={Home4} />
- 
+    <HomeStack.Navigator 
+    screenOptions={{ headerStyle:{backgroundColor:Colors.amineColor ,
+     borderEndColor : Colors.warningBackground}, headerTintColor:'white'  }} 
+    initialRouteName="Home">
+      <HomeStack.Screen options={{ title: 'Meal Categories' }} name="Home" component={CategoriesScreen} />
+
     
-      <HomeStack.Screen name="Notification" component={Home} />
-      <HomeStack.Screen name="Details" component={Home2} />
-    </HomeStack.Navigator>
+      <HomeStack.Screen name="CategoriMeal" component={CategoriesMealScreen} />
+      <HomeStack.Screen
+      options={{
+            headerTitle: 'My Deatail Meal',
+            headerRight: () => (
+              <HeaderButtons HeaderButtonComponent={HeaderButton}>
+        <Item
+          title="Favorite"
+          iconName="ios-star"
+          onPress={() => {
+            console.log('Mark as favorite!');
+          }}
+        />
+      </HeaderButtons>
+            ),
+          }}
+       name="Detail" component={MealDetailScreen} />
+
+     
+    
+</HomeStack.Navigator>
+
+
 
 
   );
 }
-export default Navigat2;
+export default NAvigat2;
 
